@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>유아 교사 선생님께 🌸</title>
+
+<!-- 검색/공유 미리보기 (OG 태그) -->
+<meta name="description" content="스승의 날, 유아교육 선생님들께 드리는 감사 편지 🌸">
+<meta property="og:type" content="website">
+<meta property="og:title" content="유아 교사 선생님께 🌸">
+<meta property="og:description" content="스승의 날, 유아교육 선생님들께 드리는 감사 편지 💌">
+<meta property="og:url" content="https://sumieun.github.io">
+<meta property="og:locale" content="ko_KR">
+
+<!-- 카카오톡 공유 미리보기 -->
+<meta property="og:image" content="https://sumieun.github.io/thumb.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="400">
+
+<!-- 트위터 카드 -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="유아 교사 선생님께 🌸">
+<meta name="twitter:description" content="스승의 날, 유아교육 선생님들께 드리는 감사 편지 💌">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  width:100%;min-height:100vh;
+  background:#f5e6ee;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:20px 0 40px;
+  font-family:'Noto Sans KR',sans-serif;
+}
+
+.wrap{
+  width:100%;max-width:390px;
+  position:relative;border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,0.15);
+  /* 9:16 비율 고정 */
+  aspect-ratio:9/16;
+}
+
+/* ── 인트로 ── */
+.intro-screen{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#fff0f5 0%,#fce4ec 55%,#f8bbd0 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;gap:0;padding:40px 20px;
+}
+.intro-bg-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.ibp{position:absolute;font-size:14px;opacity:0.3;animation:ibpf linear infinite;}
+@keyframes ibpf{0%{transform:translateY(-20px) rotate(0);}100%{transform:translateY(110%) rotate(360deg);}}
+
+.intro-label{
+  font-family:'Noto Serif KR',serif;
+  font-size:17px;color:#880e4f;
+  text-align:center;line-height:2;
+  margin-bottom:32px;letter-spacing:0.5px;
+}
+
+.env-btn{
+  width:190px;height:133px;
+  position:relative;cursor:pointer;
+  transition:transform 0.25s cubic-bezier(0.34,1.4,0.64,1),filter 0.25s ease;
+  filter:drop-shadow(0 6px 18px rgba(233,30,140,0.18));
+}
+.env-btn:hover{
+  transform:translateY(-7px) scale(1.05);
+  filter:drop-shadow(0 14px 30px rgba(233,30,140,0.38)) brightness(1.07);
+}
+.env-btn:active{transform:translateY(-2px) scale(1.01);}
+.env-svg{width:100%;height:100%;}
+
+.open-hint{
+  margin-top:22px;
+  display:flex;align-items:center;gap:6px;
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:13px;color:#e91e8c;
+  letter-spacing:1px;cursor:pointer;
+}
+.open-hint:hover{opacity:0.75;}
+
+/* ── 메인 ── */
+.main-screen{
+  position:absolute;inset:0;
+  display:none;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  overflow:hidden;
+  transition:background 1.6s ease;
+}
+.main-screen.active{display:flex;}
+
+.bg-1{background:linear-gradient(160deg,#f1f8e9 0%,#e8f5e9 40%,#fffde7 100%);}
+.bg-2{background:linear-gradient(160deg,#ede7f6 0%,#e8eaf6 50%,#e3f2fd 100%);}
+.bg-3{background:linear-gradient(160deg,#fff8e1 0%,#fce4ec 55%,#f8bbd0 100%);}
+
+.petals-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.petal{position:absolute;top:-28px;opacity:0;animation:pfall linear infinite;font-size:16px;}
+@keyframes pfall{
+  0%{opacity:0;transform:translateY(0) rotate(0deg);}
+  10%{opacity:1;}90%{opacity:0.6;}
+  100%{opacity:0;transform:translateY(900px) rotate(400deg);}
+}
+
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:30;transition:opacity 0.12s;}
+
+.top-bar{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 16px 0;z-index:10;
+}
+.dots{display:flex;gap:8px;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,0.15);transition:all 0.4s;}
+.dot.active{background:#e91e8c;transform:scale(1.35);}
+.dot.done{background:rgba(233,30,140,0.35);}
+.music-btn{
+  background:rgba(255,255,255,0.65);border:none;border-radius:16px;
+  padding:4px 11px;font-size:11px;
+  font-family:'Noto Sans KR',sans-serif;
+  cursor:pointer;color:#555;
+}
+
+.scroll-area{width:100%;overflow-y:auto;flex:1;padding:46px 28px 80px;scrollbar-width:none;}
+.scroll-area::-webkit-scrollbar{display:none;}
+.content{width:100%;display:flex;flex-direction:column;align-items:center;gap:0;}
+
+.lb{opacity:0;transform:translateY(16px);transition:opacity 0.75s ease,transform 0.75s ease;text-align:center;width:100%;margin-bottom:16px;}
+.lb.vis{opacity:1;transform:translateY(0);}
+
+.part-lbl{font-size:10px;letter-spacing:3px;color:rgba(0,0,0,0.3);margin-bottom:3px;}
+.part-ttl{font-family:'Noto Serif KR',serif;font-size:21px;font-weight:700;margin-bottom:20px;line-height:1.4;}
+.pl{font-family:'Noto Serif KR',serif;font-size:15px;line-height:2.1;color:#2e1f1f;}
+.pl.sm{font-size:12px;color:#7a6060;line-height:1.9;}
+.pl.hl{font-size:16px;font-weight:700;line-height:1.9;}
+.pl.cheer{font-size:15px;font-weight:700;line-height:1.8;padding:14px 18px;border-radius:12px;}
+.div-line{width:32px;height:1.5px;margin:6px auto;border-radius:2px;}
+.sur-box{border-radius:14px;padding:18px 20px;text-align:center;width:100%;}
+.sur-lbl{font-size:10px;letter-spacing:2px;margin-bottom:10px;font-weight:500;}
+.sur-txt{font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.95;}
+.final-big{font-family:'Noto Serif KR',serif;font-size:23px;font-weight:700;line-height:1.7;margin-bottom:12px;}
+.final-poem{font-family:'Noto Serif KR',serif;font-size:13px;line-height:2.1;color:#5a3a4a;margin-bottom:16px;}
+.final-from{font-size:12px;letter-spacing:1px;color:rgba(0,0,0,0.35);}
+
+.nav{position:absolute;bottom:16px;width:100%;display:flex;justify-content:center;gap:10px;z-index:10;}
+.nb{border-radius:22px;padding:9px 22px;font-family:'Noto Sans KR',sans-serif;font-size:13px;cursor:pointer;transition:all 0.18s;border:none;font-weight:500;}
+.nb.sec{background:rgba(0,0,0,0.09);color:#333;}
+.nb.sec:hover{background:rgba(0,0,0,0.15);}
+.nb.pri{background:#e91e8c;color:#fff;}
+.nb.pri:hover{background:#c2185b;}
+
+/* 모바일 대응 */
+@media(max-width:430px){
+  body{padding:0;background:#fff0f5;}
+  .wrap{max-width:100%;border-radius:0;box-shadow:none;aspect-ratio:9/16;min-height:100vh;}
+}
+</style>
+</head>
+<body>
+
+<!-- BGM -->
+<audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+
+<div class="wrap" id="wrap">
+  <div class="flash" id="flash"></div>
+
+  <!-- 인트로 화면 -->
+  <div class="intro-screen" id="intro-screen">
+    <div class="intro-bg-petals" id="intro-bg-petals"></div>
+
+    <div class="intro-label">유아 교사 선생님께</div>
+
+    <div class="env-btn" onclick="startShow()">
+      <svg class="env-svg" viewBox="0 0 190 133" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="eshadow">
+            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#f48fb1" flood-opacity="0.22"/>
+          </filter>
+        </defs>
+        <rect x="2" y="2" width="186" height="129" rx="10" ry="10"
+          fill="white" stroke="#f8bbd0" stroke-width="1.5" filter="url(#eshadow)"/>
+        <line x1="2" y1="2" x2="95" y2="72" stroke="#fde8f0" stroke-width="1"/>
+        <line x1="188" y1="2" x2="95" y2="72" stroke="#fde8f0" stroke-width="1"/>
+        <line x1="2" y1="131" x2="95" y2="72" stroke="#fde8f0" stroke-width="1"/>
+        <line x1="188" y1="131" x2="95" y2="72" stroke="#fde8f0" stroke-width="1"/>
+        <circle cx="95" cy="72" r="13" fill="#ffe0ec" stroke="#f48fb1" stroke-width="1.2"/>
+        <text x="95" y="77" text-anchor="middle" font-size="13">🌸</text>
+        <rect x="152" y="10" width="26" height="20" rx="2"
+          fill="none" stroke="#f8bbd0" stroke-width="1" stroke-dasharray="2,1.5"/>
+        <text x="165" y="24" text-anchor="middle" font-size="11">🌷</text>
+      </svg>
+    </div>
+
+    <div class="open-hint" onclick="startShow()">
+      💌 열어보기 <span style="font-size:15px">🎵</span>
+    </div>
+  </div>
+
+  <!-- 메인 화면 -->
+  <div class="main-screen" id="main-screen">
+    <div class="petals-layer" id="petals"></div>
+    <div class="top-bar">
+      <div class="dots" id="dots">
+        <div class="dot" id="d0"></div>
+        <div class="dot" id="d1"></div>
+        <div class="dot" id="d2"></div>
+      </div>
+      <button class="music-btn" id="music-btn" onclick="toggleMusic()">🎵 끄기</button>
+    </div>
+    <div class="scroll-area" id="scroll-area">
+      <div class="content" id="content"></div>
+    </div>
+    <div class="nav" id="nav">
+      <button class="nb sec" id="pb" onclick="prev()" style="display:none;">← 이전</button>
+      <button class="nb pri" id="nb2" onclick="next()">다음 파트 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PARTS=[
+  {
+    bg:'bg-1',divColor:'rgba(46,125,50,0.3)',
+    petals:['🌸','🌿','🌼','🍃','💐'],
+    lbl:'PART 1',ttlEmoji:'🌱',ttlText:'그 이름, 유아교사...',ttlColor:'#2e7d32',
+    lines:[
+      {t:'poem',c:'선생님,'},
+      {t:'poem',c:'새벽에 눈을 떠 거울 앞에 서는 순간부터\n이미 아이들을 위한 하루가 시작됩니다.'},
+      {t:'div'},
+      {t:'poem',c:'아무리 숨이 차도 —\n아이들의 잡기 놀이 요청엔 100m 전력질주,'},
+      {t:'poem',c:'아무리 손이 아파도 —\n아이들 미소 하나에 100장 가위질도 마다 않고,'},
+      {t:'poem',c:'아무리 알림이 쌓여도 —\n학부모 상담엔 언제나 솔톤의 완벽한 목소리.'},
+      {t:'div'},
+      {t:'poem',c:'이 작은 씨앗이 꽃이 될지,\n아름드리 나무가 될지'},
+      {t:'hl',c:'아는 사람은 오직\n기다리며 사랑으로 보듬는 선생님뿐입니다.',color:'#2e7d32'},
+      {t:'div'},
+      {t:'poem',c:'넘어지는 아이 손잡아 주던 그 손,'},
+      {t:'poem',c:'울음 그치도록 불러주던 그 목소리,'},
+      {t:'poem',c:'잘했어, 하고 눈 맞춰 주던 그 미소.'},
+      {t:'hl',c:'그 모든 것이 사랑인 것 알고 있습니다.',color:'#1b5e20'},
+      {t:'div'},
+      {t:'cheer',c:'이 글을 보고 계신 우리 선생님!\n정말 최고의 유아교사입니다. 🏆',
+        bg:'rgba(46,125,50,0.08)',border:'rgba(46,125,50,0.25)',color:'#1b5e20'},
+    ]
+  },
+  {
+    bg:'bg-2',divColor:'rgba(92,53,160,0.3)',
+    petals:['✨','💜','🌟','💫','⭐'],
+    lbl:'PART 2',ttlEmoji:'💻',ttlText:'그래도 배우러 오셨군요',ttlColor:'#4527a0',
+    lines:[
+      {t:'sur',lbl:'✦ 그런데요, 선생님 ✦',
+        bg:'rgba(92,53,160,0.07)',border:'rgba(92,53,160,0.22)',
+        lbl_c:'rgba(92,53,160,0.55)',
+        txt:'그 와중에 디지털 놀이 공부까지 하신다고요? 🤖\n에듀테크도요?',
+        txt_c:'#2d1b5e'},
+      {t:'div'},
+      {t:'poem',c:'하루 종일 아이들 뛰어다니느라\n다리도 아프고,'},
+      {t:'poem',c:'가위질에 손목도 욱신거릴 텐데,'},
+      {t:'hl',c:'오늘도 아이들을 위해 컴퓨터에 앉으신 선생님\n— 진짜 대단합니다. 👏',color:'#5c35a0'},
+      {t:'div'},
+      {t:'poem',c:'디지털 놀이, 에듀테크...'},
+      {t:'poem',c:'몰라도 괜찮고, 헷갈려도 괜찮아요.'},
+      {t:'hl',c:'아이들에게 더 좋은 놀이 주고 싶은\n마음 하나로 오신 거잖아요.',color:'#4527a0'},
+      {t:'div'},
+      {t:'sm',c:'그 마음이 이미 최고의 선생님입니다. 🌟'},
+    ]
+  },
+  {
+    bg:'bg-3',divColor:'rgba(194,24,91,0.3)',
+    petals:['🌸','💗','🌺','🌷','💕'],
+    lbl:'PART 3',ttlEmoji:'🌸',ttlText:'스승의 날, 감사합니다',ttlColor:'#c2185b',
+    lines:[
+      {t:'poem',c:'오늘 스승의 날인만큼,'},
+      {t:'poem',c:'열심히 잘 하고 있는 나를 토닥여 주세요.'},
+      {t:'hl',c:'"잘 하고 있어. 대단해. 수고 많았어.."',color:'#c2185b'},
+      {t:'div'},
+      {t:'final'}
+    ]
+  }
+];
+
+let cur=-1, timers=[], pInt=null;
+const bgm = document.getElementById('bgm');
+
+function startMusic(){
+  bgm.volume=0;
+  bgm.play().catch(()=>{});
+  // 페이드인
+  let v=0;
+  const fade=setInterval(()=>{
+    v=Math.min(v+0.03, 0.45);
+    bgm.volume=v;
+    if(v>=0.45) clearInterval(fade);
+  },80);
+  document.getElementById('music-btn').textContent='🎵 끄기';
+}
+
+function toggleMusic(){
+  if(!bgm.paused){
+    bgm.pause();
+    document.getElementById('music-btn').textContent='🎵 켜기';
+  } else {
+    bgm.play().catch(()=>{});
+    document.getElementById('music-btn').textContent='🎵 끄기';
+  }
+}
+
+function stopMusicFade(){
+  const fade=setInterval(()=>{
+    bgm.volume=Math.max(bgm.volume-0.03,0);
+    if(bgm.volume<=0){ bgm.pause(); bgm.currentTime=0; clearInterval(fade); }
+  },80);
+}
+
+function clearAll(){
+  timers.forEach(clearTimeout); timers=[];
+  if(pInt){clearInterval(pInt); pInt=null;}
+  document.querySelectorAll('.petal').forEach(p=>p.remove());
+}
+
+function startPetals(p){
+  const layer=document.getElementById('petals');
+  pInt=setInterval(()=>{
+    const el=document.createElement('div');
+    el.className='petal';
+    el.textContent=p.petals[Math.floor(Math.random()*p.petals.length)];
+    el.style.left=Math.random()*94+'%';
+    const d=5+Math.random()*5;
+    el.style.animationDuration=d+'s';
+    el.style.animationDelay=Math.random()+'s';
+    layer.appendChild(el);
+    setTimeout(()=>el.remove(),(d+2)*1000);
+  },700);
+}
+
+function updateDots(i){
+  for(let j=0;j<3;j++){
+    document.getElementById('d'+j).className='dot'+(j<i?' done':j===i?' active':'');
+  }
+}
+
+function buildContent(pi){
+  const p=PARTS[pi], area=document.getElementById('content');
+  area.innerHTML='';
+  const hdr=document.createElement('div');
+  hdr.className='lb';
+  hdr.innerHTML=`<div class="part-lbl">${p.lbl}</div><div class="part-ttl" style="color:${p.ttlColor}">${p.ttlEmoji} ${p.ttlText}</div>`;
+  area.appendChild(hdr);
+  p.lines.forEach(line=>{
+    const b=document.createElement('div'); b.className='lb';
+    if(line.t==='poem') b.innerHTML=`<div class="pl">${line.c.replace(/\n/g,'<br>')}</div>`;
+    else if(line.t==='sm') b.innerHTML=`<div class="pl sm">${line.c}</div>`;
+    else if(line.t==='hl') b.innerHTML=`<div class="pl hl" style="color:${line.color}">${line.c.replace(/\n/g,'<br>')}</div>`;
+    else if(line.t==='cheer') b.innerHTML=`<div class="pl cheer" style="color:${line.color};background:${line.bg};border:1px solid ${line.border}">${line.c.replace(/\n/g,'<br>')}</div>`;
+    else if(line.t==='div') b.innerHTML=`<div class="div-line" style="background:${p.divColor}"></div>`;
+    else if(line.t==='sur') b.innerHTML=`<div class="sur-box" style="background:${line.bg};border:1px solid ${line.border}"><div class="sur-lbl" style="color:${line.lbl_c}">${line.lbl}</div><div class="sur-txt" style="color:${line.txt_c}">${line.txt.replace(/\n/g,'<br>')}</div></div>`;
+    else if(line.t==='final') b.innerHTML=`
+      <div class="final-big" style="color:#c2185b">스승의 날을<br>진심으로 축하드립니다 🌸</div>
+      <div class="final-poem">선생님이 계셔서<br>아이들의 오늘이 빛나고,<br>선생님이 걸어오셔서<br>내일이 더 기대됩니다.<br>언제나 건강하시고, 행복하세요.</div>
+      <div class="final-from">부원장 은수미 드림 💗</div>`;
+    area.appendChild(b);
+  });
+  document.getElementById('scroll-area').scrollTop=0;
+  area.querySelectorAll('.lb').forEach((b,i)=>{
+    const t=setTimeout(()=>b.classList.add('vis'),i*420);
+    timers.push(t);
+  });
+}
+
+function go(pi){
+  clearAll(); cur=pi;
+  const flash=document.getElementById('flash');
+  flash.style.opacity='0.35';
+  setTimeout(()=>{
+    flash.style.opacity='0';
+    const p=PARTS[pi];
+    document.getElementById('main-screen').className='main-screen active '+p.bg;
+    updateDots(pi); startPetals(p); buildContent(pi);
+    document.getElementById('pb').style.display=pi>0?'block':'none';
+    document.getElementById('nb2').textContent=pi===PARTS.length-1?'↺ 처음으로':'다음 파트 →';
+  },160);
+}
+
+function startShow(){
+  document.getElementById('intro-screen').style.display='none';
+  document.getElementById('main-screen').classList.add('active');
+  startMusic();
+  go(0);
+}
+
+function next(){
+  if(cur===PARTS.length-1){
+    clearAll(); stopMusicFade();
+    const flash=document.getElementById('flash');
+    flash.style.opacity='0.35';
+    setTimeout(()=>{
+      flash.style.opacity='0';
+      document.getElementById('main-screen').className='main-screen';
+      document.getElementById('intro-screen').style.display='flex';
+      document.getElementById('content').innerHTML='';
+    },160);
+    return;
+  }
+  go(cur+1);
+}
+function prev(){ if(cur>0) go(cur-1); }
+
+// 인트로 꽃잎
+(function(){
+  const layer=document.getElementById('intro-bg-petals');
+  const items=['🌸','🌷','🌺','💐','🌼'];
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div'); p.className='ibp';
+    p.textContent=items[i%items.length];
+    p.style.left=Math.random()*92+'%';
+    p.style.top=Math.random()*100+'%';
+    const d=7+Math.random()*9;
+    p.style.animationDuration=d+'s';
+    p.style.animationDelay=Math.random()*d+'s';
+    layer.appendChild(p);
+  }
+})();
+</script>
+</body>
+</html>
